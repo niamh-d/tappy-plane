@@ -38,12 +38,12 @@ radius = 23.0
 [node name="Plane" type="CharacterBody2D"]
 script = ExtResource("1_qc51l")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_agrgi")
 animation = &"fly"
 autoplay = "fly"
-frame_progress = 0.877919
+frame_progress = 0.850127
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 2)
