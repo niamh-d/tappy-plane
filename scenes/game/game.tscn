@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cs6bpuxtgi4ii" path="res://assets/background/rocks_2.png" id="1_01oj4"]
 [ext_resource type="PackedScene" uid="uid://c7kjtwjknymdp" path="res://scenes/plane/plane.tscn" id="2_tjgnu"]
-[ext_resource type="PackedScene" uid="uid://diot02agtakmn" path="res://scenes/barrier.tscn" id="3_6qjp7"]
+[ext_resource type="PackedScene" uid="uid://diot02agtakmn" path="res://scenes/barrier/barrier.tscn" id="3_6qjp7"]
 
 [node name="Game" type="Node2D"]
 
