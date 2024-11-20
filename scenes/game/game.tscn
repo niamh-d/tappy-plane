@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cft2eiakgmfqy"]
+[gd_scene load_steps=6 format=3 uid="uid://cft2eiakgmfqy"]
 
 [ext_resource type="Texture2D" uid="uid://cs6bpuxtgi4ii" path="res://assets/background/rocks_2.png" id="1_01oj4"]
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_r2tdq"]
 [ext_resource type="PackedScene" uid="uid://c7kjtwjknymdp" path="res://scenes/plane/plane.tscn" id="2_tjgnu"]
 [ext_resource type="PackedScene" uid="uid://diot02agtakmn" path="res://scenes/barrier/barrier.tscn" id="3_6qjp7"]
+[ext_resource type="PackedScene" uid="uid://cscg0jghj7k4b" path="res://scenes/game_over_ui/game_over_ui.tscn" id="5_noyl7"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_r2tdq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverUi" parent="CanvasLayer" instance=ExtResource("5_noyl7")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -10
