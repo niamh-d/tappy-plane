@@ -16,10 +16,10 @@ texture = ExtResource("1_01oj4")
 [node name="Plane" parent="." instance=ExtResource("2_tjgnu")]
 position = Vector2(96, 327)
 
-[node name="Barrier" parent="." instance=ExtResource("3_6qjp7")]
+[node name="Ceiling" parent="." instance=ExtResource("3_6qjp7")]
 position = Vector2(1, -31)
 
-[node name="Barrier2" parent="." instance=ExtResource("3_6qjp7")]
+[node name="Floor" parent="." instance=ExtResource("3_6qjp7")]
 position = Vector2(1, 875)
 
 [node name="SpawnU" type="Marker2D" parent="."]
@@ -34,5 +34,4 @@ autostart = true
 
 [node name="PipesHolder" type="Node" parent="."]
 
-[connection signal="on_plane_died" from="Plane" to="." method="_on_plane_died"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
