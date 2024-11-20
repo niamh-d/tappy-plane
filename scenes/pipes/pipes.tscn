@@ -21,7 +21,7 @@ z_index = -1
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(24, 0)
 
-[node name="SorceSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_c7u7d")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
