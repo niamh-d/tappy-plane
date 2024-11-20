@@ -1,4 +1,48 @@
-[gd_scene format=3 uid="uid://d2m6502wsqslc"]
+[gd_scene load_steps=9 format=3 uid="uid://d2m6502wsqslc"]
+
+[ext_resource type="Texture2D" uid="uid://bbhmto18avn8" path="res://assets/background/sky.png" id="1_xsi6o"]
+[ext_resource type="LabelSettings" uid="uid://oxqlaief6xmc" path="res://assets/LG_red_72.tres" id="2_xyf0j"]
+[ext_resource type="LabelSettings" uid="uid://b1m5wkwy2hmhu" path="res://assets/LG_red_24.tres" id="3_brb3u"]
+[ext_resource type="LabelSettings" uid="uid://csf4182jm2swi" path="res://assets/LG_white_45.tres" id="4_ycdoa"]
+[ext_resource type="AudioStream" uid="uid://bfrxn8lei140v" path="res://assets/audio/bgm_menu.mp3" id="5_xw33k"]
+
+[sub_resource type="Animation" id="Animation_c3q1f"]
+resource_name = "flash"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/SpaceLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0431373), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6g1i6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/SpaceLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtsxf"]
+_data = {
+"RESET": SubResource("Animation_6g1i6"),
+"flash": SubResource("Animation_c3q1f")
+}
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -7,6 +51,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xsi6o")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -25,6 +79,7 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "TAPPY
 PLANE"
+label_settings = ExtResource("2_xyf0j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -33,14 +88,31 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "0000"
+label_settings = ExtResource("3_brb3u")
 
 [node name="SpaceLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Press space to play"
+text = "Press space
+to play"
+label_settings = ExtResource("4_ycdoa")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HighScoreTextLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "Highscore"
+label_settings = ExtResource("3_brb3u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qtsxf")
+}
+autoplay = "flash"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xw33k")
+volume_db = -22.0
+autoplay = true
