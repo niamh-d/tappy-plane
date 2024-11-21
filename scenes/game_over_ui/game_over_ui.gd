@@ -21,6 +21,7 @@ func on_plane_died() -> void:
 	show()
 	timer.start()
 	sound.play()
+	ScoreManager.save_high_score_to_file()
 
 func _on_timer_timeout() -> void:
 	game_over_label.hide()
