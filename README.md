@@ -6,19 +6,19 @@ Tappy Plane is a remake of the famous mobile game Flappy Bird to practice game e
 
 Main menu
 
-![Main menu]("/readme_imgs/main_menu.png")
+![Main menu](/readme_imgs/main_menu.png)
 
 In game
 
-![In game]("/readme_imgs/gameplay.png")
+![In game](/readme_imgs/gameplay.png)
 
 Game over
 
-![Game over]("/readme_imgs/game_over.png")
+![Game over](/readme_imgs/game_over.png)
 
 Navigation back to main menu
 
-![Back to main menu]("/readme_imgs/press_space.png")
+![Back to main menu](/readme_imgs/press_space.png)
 
 ## Features
 
