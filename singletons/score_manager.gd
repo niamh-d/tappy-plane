@@ -45,16 +45,19 @@ func update_high_scores_array(name: String) -> void:
 	var new_entry = {"playerName": name, "highScore": _score}
 	sort_high_scores_array()
 	high_scores_array.insert(high_scores_array.bsearch_custom(new_entry, sort_by_score), new_entry)
+	set_third_highest_score()
 	SignalManager.on_leaderboard_updated.emit()
 
+func set_third_highest_score() -> void:
+		if(high_scores_array.size() >= 3):
+			_third_highest_score = high_scores_array[2]["highScore"]
 
 func set_score_data() -> void:
 	sort_high_scores_array()
 	var hs_data: Dictionary = high_scores_array[0]
 	_high_score = hs_data["highScore"]
 	hs_player_name = hs_data["playerName"]
-	if(high_scores_array.size() >= 3):
-		_third_highest_score = high_scores_array[2]["highScore"]
+	set_third_highest_score()
 
 func load_high_score_from_file() -> void:
 	var file: FileAccess = FileAccess.open(SCORES_PATH, FileAccess.READ)
