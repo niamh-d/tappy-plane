@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cscg0jghj7k4b"]
+[gd_scene load_steps=10 format=3 uid="uid://cscg0jghj7k4b"]
 
 [ext_resource type="Script" path="res://scenes/game_over_ui/game_over_ui.gd" id="1_cuwsb"]
 [ext_resource type="LabelSettings" uid="uid://c301lemupcfp5" path="res://assets/LG_red_64.tres" id="1_ojxdt"]
 [ext_resource type="LabelSettings" uid="uid://csf4182jm2swi" path="res://assets/LG_white_45.tres" id="2_r55bg"]
 [ext_resource type="AudioStream" uid="uid://bvk3dwlfhjskp" path="res://assets/audio/game_over.wav" id="3_5s467"]
+[ext_resource type="FontFile" uid="uid://bfexgc71qq60m" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="5_yqv0q"]
+[ext_resource type="LabelSettings" uid="uid://cem8161byxgfr" path="res://assets/LG_white_30.tres" id="6_xuysq"]
+[ext_resource type="LabelSettings" uid="uid://b1m5wkwy2hmhu" path="res://assets/LG_red_24.tres" id="7_tkq7w"]
+[ext_resource type="Script" path="res://scenes/game_over_ui/leaderboard.gd" id="7_wubrf"]
+
+[sub_resource type="Theme" id="Theme_t2nrd"]
+default_font = ExtResource("5_yqv0q")
 
 [node name="GameOverUi" type="Control"]
 layout_mode = 3
@@ -14,39 +21,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cuwsb")
 
-[node name="GameOverLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = -11.5
-offset_right = 46.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "GAME OVER"
-label_settings = ExtResource("1_ojxdt")
-
-[node name="SpaceLabel" type="Label" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = -11.5
-offset_right = 46.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "press space"
-label_settings = ExtResource("2_r55bg")
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -54,4 +28,104 @@ one_shot = true
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_5s467")
 
+[node name="Leaderboard" type="GridContainer" parent="."]
+layout_mode = 2
+offset_left = 192.0
+offset_top = 656.0
+offset_right = 310.0
+offset_bottom = 774.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+script = ExtResource("7_wubrf")
+
+[node name="Heading" type="Label" parent="Leaderboard"]
+layout_mode = 2
+text = "Leaders"
+label_settings = ExtResource("6_xuysq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Row1" type="Label" parent="Leaderboard"]
+layout_mode = 2
+text = "EMPTY"
+label_settings = ExtResource("7_tkq7w")
+horizontal_alignment = 1
+
+[node name="Row2" type="Label" parent="Leaderboard"]
+layout_mode = 2
+text = "EMPTY"
+label_settings = ExtResource("7_tkq7w")
+horizontal_alignment = 1
+
+[node name="Row3" type="Label" parent="Leaderboard"]
+layout_mode = 2
+text = "EMPTY"
+label_settings = ExtResource("7_tkq7w")
+horizontal_alignment = 1
+
+[node name="NewHighScoreMessage" type="Label" parent="."]
+visible = false
+layout_mode = 2
+offset_left = -13.0
+offset_top = 175.0
+offset_right = 513.0
+offset_bottom = 270.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "New high score!!
+Type name and
+press enter to save."
+label_settings = ExtResource("6_xuysq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerNameInput" type="LineEdit" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 218.0
+offset_top = 290.0
+offset_right = 276.625
+offset_bottom = 315.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../NewHighScoreMessage")
+theme = SubResource("Theme_t2nrd")
+placeholder_text = "NAME"
+alignment = 1
+max_length = 5
+caret_blink = true
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 349.0
+offset_right = 484.0
+offset_bottom = 413.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER!"
+label_settings = ExtResource("1_ojxdt")
+horizontal_alignment = 1
+
+[node name="SpaceLabel" type="Label" parent="."]
+visible = false
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -72.0
+offset_right = 138.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "press space"
+label_settings = ExtResource("2_r55bg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="text_submitted" from="PlayerNameInput" to="." method="_on_player_name_input_text_submitted"]
