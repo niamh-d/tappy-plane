@@ -53,7 +53,8 @@ func set_score_data() -> void:
 	var hs_data: Dictionary = high_scores_array[0]
 	_high_score = hs_data["highScore"]
 	hs_player_name = hs_data["playerName"]
-	_third_highest_score = high_scores_array[2]["highScore"]
+	if(high_scores_array.size() >= 3):
+		_third_highest_score = high_scores_array[2]["highScore"]
 
 func load_high_score_from_file() -> void:
 	var file: FileAccess = FileAccess.open(SCORES_PATH, FileAccess.READ)

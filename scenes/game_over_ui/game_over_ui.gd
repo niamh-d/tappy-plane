@@ -11,6 +11,7 @@ extends Control
 func _ready() -> void:
 	hide()
 	SignalManager.on_plane_died.connect(on_plane_died)
+	SignalManager.on_leaderboard_updated.connect(start_timer)
 
 func _process(delta: float) -> void:
 	if space_label.visible && Input.is_action_just_pressed("fly"):
@@ -37,4 +38,6 @@ func _on_player_name_input_text_submitted(name: String) -> void:
 	ScoreManager.save_new_high_score_to_file(name)
 	new_high_score_message.hide()
 	player_name_input.hide()
+
+func start_timer() -> void:
 	timer.start()
