@@ -17,6 +17,11 @@ func get_score() -> int:
 func get_high_score() -> int:
 	return _high_score
 
+func set_hs_data() -> void:
+	var data = high_scores_array[0]
+	_high_score = data["highScore"]
+	hs_player_name = data["playerName"]
+
 func get_hs_player_name() -> String:
 	return hs_player_name
 
@@ -33,10 +38,8 @@ func increment_score() -> void:
 func is_new_high_score() -> bool:
 	return _score > _third_highest_score
 
-func sort_by_score(a, b):
-	if a["highScore"] > b["highScore"]:
-		return true
-	return false
+func sort_by_score(a: Dictionary, b: Dictionary) -> bool:
+	return a["highScore"] > b["highScore"]
 	
 func sort_high_scores_array() -> void:
 	high_scores_array.sort_custom(sort_by_score)
@@ -45,6 +48,7 @@ func update_high_scores_array(name: String) -> void:
 	var new_entry = {"playerName": name, "highScore": _score}
 	sort_high_scores_array()
 	high_scores_array.insert(high_scores_array.bsearch_custom(new_entry, sort_by_score), new_entry)
+	set_hs_data()
 	set_third_highest_score()
 	SignalManager.on_leaderboard_updated.emit()
 
