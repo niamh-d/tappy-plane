@@ -20,6 +20,10 @@ Navigation back to main menu
 
 ![Back to main menu](/readme_imgs/press_space.png)
 
+Leaderboard
+
+![Leaderboard](/readme_imgs/leaderboard.png)
+
 ## Features
 
 - Flappy bird remake
@@ -27,6 +31,7 @@ Navigation back to main menu
 - Persistance of high score
 - Parallax background
 - Animations, music and sound effects
+- Leaderboard
 
 ## What is Godot
 
