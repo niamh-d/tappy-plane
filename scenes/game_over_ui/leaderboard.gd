@@ -1,9 +1,5 @@
 extends GridContainer
 
-@onready var row_1: Label = $Row1
-@onready var row_2: Label = $Row2
-@onready var row_3: Label = $Row3
-
 var high_scores: Array
 var children: Array
 var range: int
