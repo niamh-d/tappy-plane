@@ -24,6 +24,10 @@ Leaderboard
 
 ![Leaderboard](/readme_imgs/leaderboard.png)
 
+New high score
+
+![Input player name](/readme_imgs/input_name.png)
+
 ## Features
 
 - Flappy bird remake
