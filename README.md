@@ -40,3 +40,7 @@ New high score
 ## What is Godot
 
 Godot is a cross-platform, free and open-source game engine released under the permissive MIT license.
+
+## GameOverUI
+
+![GameOverUI](/readme_imgs/game_over_ui.png)
